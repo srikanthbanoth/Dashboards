@@ -1,0 +1,113 @@
+<template>
+    <lightning-card class="slds-p-around_medium">
+        <!-- <div class="slds-grid slds-gutters slds-p-horizontal_large">
+            <div class="slds-col">
+                <lightning-combobox
+                name="progress"
+                label="Owner"
+                value={value}
+                placeholder="Select Value"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+            </div>
+            <div class="slds-col">
+                <lightning-combobox
+                name="progress"
+                label="Time"
+                value={value}
+                placeholder="Select Value"
+                options={option}
+                onchange={handleChange} ></lightning-combobox>
+            </div>
+          </div> -->
+          <!-- <div class="slds-grid slds-wrap slds-p-around_small">
+            <div class="slds-col slds-size_1-of-3 back">
+                <c-chart type="horizontalBar" responsive="true">
+                    <c-dataset labels={chartLabel}>
+                    <c-data label="# of Revenue" detail={chartValue} backgroundcolor="rgba(50, 150, 237, 1)" bordercolor="rgba(50, 150, 237, 1)" borderwidth="1"></c-data>
+                    </c-dataset>
+                    <c-title text="Horizontal Chart"></c-title>
+                    <c-legend position="bottom"></c-legend>
+                    <c-cartesian-category-axis axis="y" position="bottom"></c-cartesian-category-axis>
+                    <c-cartesian-linear-axis axis="x" ticks-beginatzero="true"></c-cartesian-linear-axis>
+                </c-chart>
+                <a href="https://forsysinc-8d-dev-ed.develop.lightning.force.com/lightning/r/Report/00O2w00000BRrn0EAD/view?queryScope=userFolders" target="_blank">View Report</a>
+            </div>
+            
+            <div class="slds-col slds-size_1-of-3 back">
+                <c-chart type="bar" responsive="true">
+                    <c-title text="Category"></c-title>
+                    <c-dataset labels={chartLabel}>
+                    <c-data label="# of stages" detail={chartValue} backgroundcolor='[
+                    "rgba(82, 183, 216, 1)",
+                    "rgba(225, 96, 50, 1)",
+                    "rgba(255, 176, 59, 1)",
+                    "rgba(255, 176, 59, 1)",
+                    "rgba(255, 176, 59, 1)",
+                    "rgba(255, 176, 59, 1)",
+                    "rgba(255, 176, 59, 1)",
+                    "rgba(255, 176, 59, 1)",
+                    "rgba(84, 167, 123, 1)"
+                    ]'></c-data>
+                    </c-dataset>
+                    <c-cartesian-category-axis axis="x" position="bottom" title-display="true" title-labelstring="Category axis">
+                    </c-cartesian-category-axis>
+                    <c-cartesian-linear-axis axis="y" ticks-stepsize="15" position="right" title-display="true" title-labelstring="Linear axis"></c-cartesian-linear-axis>
+                    </c-chart>
+                    <a href="https://forsysinc-8d-dev-ed.develop.lightning.force.com/lightning/r/Report/00O2w00000BRrn0EAD/view?queryScope=userFolders" target="_blank">View Report</a>
+            </div>
+
+            <div class="slds-col slds-size_1-of-3 back">
+                <c-chart type="horizontalBar" responsive="true">
+                    <c-dataset labels={chartLabel}>
+                    <c-data label="# of Revenue" detail={chartValue} backgroundcolor="rgba(50, 150, 237, 1)" bordercolor="rgba(50, 150, 237, 1)" borderwidth="1"></c-data>
+                    </c-dataset>
+                    <c-title text="Horizontal Chart"></c-title>
+                    <c-legend position="bottom"></c-legend>
+                    <c-cartesian-category-axis axis="y" position="bottom"></c-cartesian-category-axis>
+                    <c-cartesian-linear-axis axis="x" ticks-beginatzero="true"></c-cartesian-linear-axis>
+                </c-chart>
+                <a href="https://forsysinc-8d-dev-ed.develop.lightning.force.com/lightning/r/Report/00O2w00000BRrn0EAD/view?queryScope=userFolders" target="_blank">View Report</a>
+            </div>
+            
+          </div> -->
+     
+      <!-- <template if:true={isTable}>
+           
+        <lightning-datatable
+        data={display}
+        hide-checkbox-column="true"
+        columns={columns}
+        key-field="id"
+    >
+    </lightning-datatable>
+      </template>
+      <template if:false={isTable}>
+            <div>
+                <c-chart type="horizontalBar" responsive="true">
+                    <c-dataset labels={chartLabel}>
+                    <c-data label="# of Revenue" detail={chartValue} backgroundcolor="rgba(50, 150, 237, 1)" bordercolor="rgba(50, 150, 237, 1)" borderwidth="1"></c-data>
+                    </c-dataset>
+                    <c-title text="Horizontal Chart"></c-title>
+                    <c-legend position="bottom"></c-legend>
+                    <c-cartesian-category-axis axis="y" position="bottom"></c-cartesian-category-axis>
+                    <c-cartesian-linear-axis axis="x" ticks-beginatzero="true"></c-cartesian-linear-axis>
+                </c-chart>
+                <a href="https://forsysinc-8d-dev-ed.develop.lightning.force.com/lightning/r/Report/00O2w00000BRrn0EAD/view?queryScope=userFolders" target="_blank">View Report</a>
+            </div>
+      </template> -->
+      <div class="slds-grid slds-wrap">
+        <template if:true={loaded}>
+            <template for:each={data} for:item="acc">
+                <div class="slds-col slds-size_1-of-3"  key={acc} style="margin: auto 0px;">
+                    <c-showtables acc={acc}></c-showtables>
+                </div>
+              </template>
+          </template>
+      </div>
+    
+      <template if:false={loaded}> 
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+      </template>
+    </lightning-card>
+</template>

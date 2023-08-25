@@ -1,0 +1,46 @@
+<template>
+    <template if:true={isTable}>
+        <lightning-button variant="brand" label="View Table" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+       
+    </template>
+    <template if:false={isTable}>
+        <div>
+            <lightning-combobox
+            name="Type of Chart"
+            label="Type of Chart"
+            value={defvalue}
+            placeholder="Select Type of Chart"
+            options={options}
+            onchange={handleChange} 
+            ></lightning-combobox>
+            <template if:true={isbar}>
+                <c-chart type="horizontalBar" responsive="true">
+                    <c-dataset labels={chartLabel}>
+                        <c-data label="# of Revenue" detail={chartValue} backgroundcolor="rgba(50, 150, 237, 1)"
+                            bordercolor="rgba(50, 150, 237, 1)" borderwidth="1"></c-data>
+                    </c-dataset>
+                    <c-title text="Horizontal Chart"></c-title>
+                    <c-legend position="bottom"></c-legend>
+                    <c-cartesian-category-axis axis="y" position="bottom"></c-cartesian-category-axis>
+                    <c-cartesian-linear-axis axis="x" ticks-beginatzero="true"></c-cartesian-linear-axis>
+                </c-chart>
+                <a href="https://forsysinc-8d-dev-ed.develop.lightning.force.com/lightning/r/Report/00O2w00000BRrn0EAD/view?queryScope=userFolders"
+                target="_blank">View Report</a>
+            </template>
+            <template if:false={isbar}>
+                <c-chart type="pie" responsive="true">
+                    <c-dataset labels={chartLabel}>
+                    <c-data label="# of Tomatoes" detail={chartValue} backgroundcolor='[
+                    "rgba(206, 103, 22, 1)",
+                    "rgba(245, 150, 35, 1)",
+                    "rgba(245, 192, 98, 1)",
+                    "rgba(245, 222, 152, 1)"
+                    ]'></c-data>
+                    </c-dataset>
+                    <c-title text="Pie Chart"></c-title>
+                    <c-legend position="right"></c-legend>
+                    </c-chart>
+            </template>
+        </div>
+    </template>
+</template>
